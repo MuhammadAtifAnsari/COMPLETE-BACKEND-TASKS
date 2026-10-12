@@ -51,8 +51,26 @@ app.delete('/notes/:index', (req, res) => {
 });
 
 
+// PATCH METHOD /notes/:index : edit notes
+app.patch('/notes/:index', (req, res) => {
 
+    const index = req.params.index - 1;
+    
+    const description = req.body.description;  // descriotion key access  
+    notes [ index ].description = description; // descriotion edit
 
+    const title = req.body.title;              // title key access
+    notes [ index ].title = title;             // title edit       
+    console.log(notes[index]);
+    
+
+    // user ko message send
+    res.status(200).json({
+        message: "notes edit successfully!",
+        code: 200
+    })
+
+});
 
 
 export default app;
